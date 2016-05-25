@@ -1,0 +1,6 @@
+
+[dhcp_agent_manager]
+neutron.agent.dhcp_agent.DhcpAgentWithStateReport = 
+
+[l3_agent_manager]
+neutron.agent.l3_agent.L3NATAgentWithStateReport = 
