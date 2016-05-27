@@ -1016,10 +1016,10 @@ if is_service_enabled keystone; then
 export OS_IDENTITY_API_VERSION=3
 export OS_AUTH_URL=$KEYSTONE_AUTH_URI
 export OS_USERNAME=admin
-#export OS_USER_DOMAIN_ID=default
+export OS_USER_DOMAIN_ID=default
 export OS_PASSWORD=$ADMIN_PASSWORD
 export OS_PROJECT_NAME=admin
-#export OS_PROJECT_DOMAIN_ID=default
+export OS_PROJECT_DOMAIN_ID=default
 export OS_REGION_NAME=$KEYSTONE_REGION_NAME
 
 EOF
