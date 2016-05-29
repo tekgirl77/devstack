@@ -1016,6 +1016,9 @@ if is_service_enabled keystone; then
     cat > $TOP_DIR/userrc_early <<EOF
 # Use this for debugging issues before files in accrc are created
 
+# Comment out _DOMAIN variables to address bug in keystone v.2: https://ask.openstack.org/en/question/80400/using-nova-client-in-windows-error-discoveryfailure-could-not-determine-a-suitable-url-for-the-plugin/
+# Use latest python-openstackclient to address bug: https://bugs.launchpad.net/python-openstackclient/+bug/1447704
+# https://git.openstack.org/cgit/openstack/python-openstackclient/commit/?id=b8432408e68855d7ce9269b7e681de3c5b733b09
 # Set up password auth credentials now that Keystone is bootstrapped
 export OS_IDENTITY_API_VERSION=2
 export OS_AUTH_URL=$KEYSTONE_AUTH_URI
