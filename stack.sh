@@ -1020,13 +1020,13 @@ if is_service_enabled keystone; then
 # Use latest python-openstackclient to address bug: https://bugs.launchpad.net/python-openstackclient/+bug/1447704
 # https://git.openstack.org/cgit/openstack/python-openstackclient/commit/?id=b8432408e68855d7ce9269b7e681de3c5b733b09
 # Set up password auth credentials now that Keystone is bootstrapped
-export OS_IDENTITY_API_VERSION=2
+export OS_IDENTITY_API_VERSION=3
 export OS_AUTH_URL=$KEYSTONE_AUTH_URI
 export OS_USERNAME=admin
-#export OS_USER_DOMAIN_ID=default
+export OS_USER_DOMAIN_ID=default
 export OS_PASSWORD=$ADMIN_PASSWORD
 export OS_PROJECT_NAME=admin
-#export OS_PROJECT_DOMAIN_ID=default
+export OS_PROJECT_DOMAIN_ID=default
 export OS_REGION_NAME=$REGION_NAME
 
 EOF
