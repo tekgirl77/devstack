@@ -11,6 +11,7 @@
 accrc
 doc/files
 doc/build
+.DS_Store
 files/*.gz
 files/*.rpm
 files/*.rpm.*
