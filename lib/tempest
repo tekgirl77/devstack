@@ -240,8 +240,7 @@ function configure_tempest {
 
     # the public network (for floating ip access) is only available
     # if the extension is enabled.
-    EXTERNAL_NETWORK_EXT=$(neutron ext-list | grep 'external-net' | get_field 1)
-    if [[ -n $EXTERNAL_NETWORK_EXT ]]; then
+    if is_networking_extension_supported 'external-net'; then
         public_network_id=$(neutron net-list | grep $PUBLIC_NETWORK_NAME | \
             awk '{print $2}')
     fi
@@ -600,6 +599,12 @@ function install_tempest {
     # running pip install -U on tempest requirements
     $TEMPEST_DIR/.tox/tempest/bin/pip install -c $REQUIREMENTS_DIR/upper-constraints.txt -r requirements.txt
     PROJECT_VENV["tempest"]=${TEMPEST_DIR}/.tox/tempest
+    popd
+}
+
+# install_tempest_plugins() - Install any specified plugins into the tempest venv
+function install_tempest_plugins {
+    pushd $TEMPEST_DIR
     if [[ $TEMPEST_PLUGINS != 0 ]] ; then
         tox -evenv-tempest -- pip install $TEMPEST_PLUGINS
         echo "Checking installed Tempest plugins:"
